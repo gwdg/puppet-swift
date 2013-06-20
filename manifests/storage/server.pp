@@ -18,6 +18,7 @@ define swift::storage::server(
   $replicator_concurrency = $::processorcount,
   $updater_concurrency    = $::processorcount,
   $reaper_concurrency     = $::processorcount,
+  $node_timeout           = '10',
   $log_facility           = "LOG_LOCAL2",
   $log_level              = "INFO",
   $log_address            = "/dev/log",
