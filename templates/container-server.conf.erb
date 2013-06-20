@@ -13,12 +13,15 @@ pipeline = <%= pipeline.to_a.join(' ') %>
 
 [app:container-server]
 use = egg:swift#container
+node_timeout = <%= node_timeout %>
 
 [container-replicator]
 concurrency = <%= replicator_concurrency %>
+node_timeout = <%= node_timeout %>
 
 [container-updater]
 concurrency = <%= updater_concurrency %>
+node_timeout = <%= node_timeout %>
 
 [container-auditor]
 
