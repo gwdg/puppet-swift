@@ -12,6 +12,7 @@ pipeline = <%= @pipeline.to_a.join(' ') %>
 
 [app:object-server]
 use = egg:swift#object
+node_timeout = <%= node_timeout %>
 log_name = object-server
 log_facility = <%= log_facility %>
 log_level = <%= log_level %>
@@ -20,8 +21,12 @@ log_address = <%= log_address %>
 
 [object-replicator]
 concurrency = <%= @replicator_concurrency %>
+node_timeout = <%= node_timeout %>
 
 [object-updater]
 concurrency = <%= @updater_concurrency %>
+node_timeout = <%= node_timeout %>
 
 [object-auditor]
+files_per_second = 5
+bytes_per_second = 1048576
