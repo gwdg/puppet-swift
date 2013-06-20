@@ -17,6 +17,9 @@
 #
 class swift::storage::all(
   $storage_local_net_ip,
+  $workers            = '1',
+  $concurrency        = $::processorcount,
+  $node_timeout       = '10',
   $devices            = '/srv/node',
   $object_port        = '6000',
   $container_port     = '6001',
@@ -33,9 +36,14 @@ class swift::storage::all(
   }
 
   Swift::Storage::Server {
-    devices              => $devices,
-    storage_local_net_ip => $storage_local_net_ip,
-    mount_check          => $mount_check,
+    workers              	=> $workers,
+    replicator_concurrency	=> $concurrency,
+    updater_concurrency		=> $concurrency,
+    reaper_concurrency		=> $concurrency,
+    node_timeout		=> $node_timeout,
+    devices              	=> $devices,
+    storage_local_net_ip 	=> $storage_local_net_ip,
+    mount_check          	=> $mount_check,
   }
 
   swift::storage::server { $account_port:
