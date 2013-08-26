@@ -19,9 +19,9 @@ define swift::storage::server(
   $updater_concurrency    = $::processorcount,
   $reaper_concurrency     = $::processorcount,
   $node_timeout           = '10',
-  $log_facility           = "LOG_LOCAL2",
-  $log_level              = "INFO",
-  $log_address            = "/dev/log",
+  $log_facility           = 'LOG_LOCAL2',
+  $log_level              = 'INFO',
+  $log_address            = '/dev/log',
   # this parameters needs to be specified after type and name
   $config_file_path       = "${type}-server/${name}.conf"
 ) {
